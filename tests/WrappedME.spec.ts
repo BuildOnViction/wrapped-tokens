@@ -200,7 +200,7 @@ describe('WrappedME token', async function() {
       .to.be.revertedWith('VRC25: Permit expired');
   });
 
-  it('should not take fee if caller of WrappedAnzen is contract', async function() {
+  it('should not take fee if caller is contract', async function() {
     const testTransferHelperFactory = await hhe.ethers.getContractFactory("TestTransferHelper")
     const testTransferHelper = await testTransferHelperFactory.deploy(sut.address);
 
@@ -226,7 +226,7 @@ describe('WrappedME token', async function() {
   });
 });
 
-async function createPermit(token: WrappedAnzen, owner: Signer, spenderAddress: string, amount: BigNumber, deadline: BigNumber): Promise<ECDSASignature> {
+async function createPermit(token: WrappedME, owner: Signer, spenderAddress: string, amount: BigNumber, deadline: BigNumber): Promise<ECDSASignature> {
   const ownerAddress = await owner.getAddress();
   const nonce = await token.nonces(ownerAddress);
   const chainId = await hhe.ethers.provider.send('eth_chainId', []);

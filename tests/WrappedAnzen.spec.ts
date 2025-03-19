@@ -200,7 +200,7 @@ describe('WrappedAnzen token', async function() {
       .to.be.revertedWith('VRC25: Permit expired');
   });
 
-  it('should not take fee if caller of WrappedAnzen is contract', async function() {
+  it('should not take fee if caller is contract', async function() {
     const testTransferHelperFactory = await hhe.ethers.getContractFactory("TestTransferHelper")
     const testTransferHelper = await testTransferHelperFactory.deploy(sut.address);
 
